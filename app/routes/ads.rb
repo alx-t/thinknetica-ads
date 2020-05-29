@@ -7,7 +7,7 @@ class AdsApi < Sinatra::Application
     end
 
     get '/ads' do
-      AdSerializer.new(Ad.all.first).to_json
+      AdSerializer.new(Ad.all).to_json
     end  
 
     post '/ads' do
