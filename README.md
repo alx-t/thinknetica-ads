@@ -1,1 +1,2 @@
-# thinknetica-ads
+# Thinknetica Ruby Microservices курс
+
