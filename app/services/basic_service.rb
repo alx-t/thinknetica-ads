@@ -13,7 +13,7 @@ module BasicService
   attr_reader :errors
 
   def initialize(*args)
-    super(args.first)
+    super(*args)
     @errors = []
   end
 
