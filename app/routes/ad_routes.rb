@@ -12,8 +12,6 @@ class AdRoutes < Application
     end
 
     post do
-      p '---> params'
-      p params
       ad_params = validate_with!(AdParamsContract)
 
       result = Ads::CreateService.call(
