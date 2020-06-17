@@ -18,9 +18,16 @@ module Ads
 
       if @ad.valid?
         @ad.save
+        geocoder_service.geocode?(@ad.id)
       else
         fail!(@ad.errors)
       end
+    end
+
+    private
+
+    def geocoder_service
+      @geocoder_service ||= GeocoderService::Client.new
     end
   end
 end
