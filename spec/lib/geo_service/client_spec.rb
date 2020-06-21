@@ -7,11 +7,11 @@ RSpec.describe GeocoderService::Client, type: :client do
 
   let(:status) { 201 }
   let(:headers) { { 'Content-Type' => 'application/json' } }
-  let(:body) { {} }
+  let(:body) { { coordinates: [1, 2] } }
 
   describe '#geocode (valid ad_id)' do
     it 'returns a true value' do
-      expect(subject.geocode?(99)).to be_truthy
+      expect(subject.geocode('city')).to eq([1, 2])
     end
   end
 
@@ -19,7 +19,7 @@ RSpec.describe GeocoderService::Client, type: :client do
     let(:status) { 422 }
 
     it 'returns a false value' do
-      expect(subject.geocode?(99)).to be_falsey
+      expect(subject.geocode('invalid')).to be_nil
     end
   end
 end

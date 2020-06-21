@@ -1,12 +1,10 @@
 module GeocoderService
   module Api
-    def geocode?(ad_id)
+    def geocode(city)
       response = connection.post('') do |request| 
-        request.params['id'] = ad_id
+        request.params['city'] = city
       end
-
-      return true if response.status == 201
-      false
+      response.body['coordinates'] if response.success?
     end
   end
 end

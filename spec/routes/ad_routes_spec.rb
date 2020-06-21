@@ -30,8 +30,8 @@ RSpec.describe AdRoutes, type: :routes do
 
       header 'Authorization', "Bearer #{auth_token}"
 
-      allow(geo_service).to receive(:'geocode?')
-        .and_return(true)
+      allow(geo_service).to receive(:'geocode')
+        .and_return([1, 2])
 
       allow(GeocoderService::Client).to receive(:new)
         .and_return(geo_service)      
