@@ -2,6 +2,15 @@ RSpec.describe Ads::CreateService do
   subject { described_class }
 
   let(:user_id) { 101 }
+  let(:geo_service) { instance_double('GeoClient') }
+
+  before do
+    allow(geo_service).to receive(:'geocode')
+      .and_return([1, 2])
+
+    allow(GeocoderService::Client).to receive(:new)
+      .and_return(geo_service)      
+  end  
 
   context 'valid parameters' do
     let(:ad_params) do
